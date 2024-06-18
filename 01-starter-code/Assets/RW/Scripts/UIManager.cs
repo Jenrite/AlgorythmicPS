@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Sheep Saved: " + GameManager.Instance.sheepSaved;
+        scoreText.text = "Score: " + GameManager.Instance.score;
         UpdateHearts(GameManager.Instance.sheepDropped);
     }
 

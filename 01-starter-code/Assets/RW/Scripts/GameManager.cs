@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     // A number specifying how many sheep can be dropped before we lose the game.
     public int sheepDroppedBeforeGameOver;
 
+    public int score;
     // A reference to the sheep manager.
     public SheepManager sheepSpawner;
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         // TODO => Increase the number of sheep saved by 1.
         sheepSaved++;
         Debug.Log("Sheep saved++");
+        score += 100;
     }
 
     private void GameOver()

@@ -10,9 +10,8 @@ public class TitlescreenManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Quit()
     {
-        
+        Application.Quit();
     }
 }
