@@ -20,10 +20,6 @@ public class Sheep: MonoBehaviour
         myCollider = GetComponent<BoxCollider>();
         myRigidbody = GetComponent<Rigidbody>();
     }
-    public void EatHay()
-    {
-        OnAteHay?.Invoke(this);
-    }
 
     private void Update()
     {
@@ -34,7 +30,9 @@ public class Sheep: MonoBehaviour
     {
         Destroy(gameObject);
         SFXManager.Instance.PlaySheepHitSFX();
+        OnAteHay?.Invoke(this);
         Instantiate(FeedbackHeart, transform.position, Quaternion.identity);
+
     }
 
     private void Drop()
