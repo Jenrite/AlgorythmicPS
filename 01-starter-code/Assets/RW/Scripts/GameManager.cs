@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     {
         // TODO => Increase the number of sheep saved by 1.
         sheepSaved++;
-        Debug.Log("Sheep saved++");
         score += 100;
     }
 
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(sheep.gameObject);
         }
-        Debug.Log("Game over complete");
     }
 
     public void DroppedSheep()
@@ -56,7 +54,6 @@ public class GameManager : MonoBehaviour
         // TODO => Record that we have dropped a sheep, 
         // then call GameOver() if we have dropped too many.
         sheepDropped++;
-        Debug.Log("Sheep dropped++");
 
         // Call GameOver() if we have dropped too many.
         if (sheepDropped >= sheepDroppedBeforeGameOver)

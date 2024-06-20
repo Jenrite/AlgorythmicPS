@@ -40,9 +40,11 @@ public class Sheep: MonoBehaviour
         dropped = true;
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
+        myRigidbody.useGravity = true;
         Destroy(gameObject, dropDestroyDelay);
         OnDropped?.Invoke(this);
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

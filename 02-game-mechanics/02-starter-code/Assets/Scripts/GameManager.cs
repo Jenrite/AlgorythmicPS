@@ -35,4 +35,24 @@ public class GameManager : MonoBehaviour
     {
         Gold = StartingGold; 
     }
+
+    public bool gameOver = false;
+    public UnityEvent OnHealthSet = new UnityEvent();
+    public UnityEvent OnGameOver = new UnityEvent();
+    private int health = 5;
+    public int Health
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+            OnHealthSet?.Invoke();
+            if (health <= 0 && !gameOver)
+            {
+                OnGameOver?.Invoke();
+                gameOver = true;
+            }
+        }
+    }
+
 }
