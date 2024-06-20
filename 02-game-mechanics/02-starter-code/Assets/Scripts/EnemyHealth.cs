@@ -10,8 +10,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        // The health bar takes note of its initial x scale, so that it can
-        // rescale itself relative to that initial scale.
         originalXScale = gameObject.transform.localScale.x;
     }
 
@@ -20,6 +18,8 @@ public class EnemyHealth : MonoBehaviour
         // newScale is going to be what we set the scale to. Initially, it's
         // just whatever the current scale is.
         Vector3 newScale = gameObject.transform.localScale;
+
+        newScale.x = (currentHealth / maxHealth) * originalXScale;
 
         // TODO: Update the x value of newScale. The new value should be a number
         // between 0 and originalXScale based on our currentHealth and maxHealth
