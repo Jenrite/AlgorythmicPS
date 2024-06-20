@@ -25,6 +25,7 @@ using UnityEngine.Events;
         public List<Wave> waves; // The definition of all our waves (will be set in-editor)
         private int currentWaveIndex = 0;
         public int timeBetweenWaves = 5;
+        public List<Enemy> enemies;
 
         // This is a cool Unity trick where you can define Start as a coroutine.
         // Unity will automatically run it as a coroutine when the game object starts.
@@ -48,6 +49,7 @@ using UnityEngine.Events;
         public void SpawnEnemy()
         {
             Enemy newEnemy = Instantiate(waves[currentWaveIndex].enemyPrefab, transform.position, Quaternion.identity);
+            enemies.Add(newEnemy);
             newEnemy.waypoints = waypoints;
         }
     }
