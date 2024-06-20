@@ -35,12 +35,13 @@ public class Sheep: MonoBehaviour
 
     }
 
-    private void Drop()
+    private IEnumerator Drop()
     {
         dropped = true;
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
         myRigidbody.useGravity = true;
+        yield return new WaitForSeconds(3);
         Destroy(gameObject, dropDestroyDelay);
         OnDropped?.Invoke(this);
     }
@@ -55,7 +56,7 @@ public class Sheep: MonoBehaviour
         }
         else if (other.CompareTag("DropSheep") && !dropped)
         {
-            Drop();
+            StartCoroutine(Drop);
             SFXManager.Instance.PlaySheepDropSFX();
         }
 
