@@ -7,12 +7,7 @@ public class Bullet : MonoBehaviour
 
     public float damage = 25f;
     public float speed = 1f;
-
-
-    void Start()
-    {
-        
-    }
+    public Transform target;
 
     // Update is called once per frame
     void Update()
