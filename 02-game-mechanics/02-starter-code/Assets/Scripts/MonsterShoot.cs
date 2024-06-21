@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MonsterShoot : MonoBehaviour
 {
     public float shotCooldown;
     private float lastShotTime;
     private List<GameObject> enemiesInRange = new List<GameObject>();
-    public GameObject bulletPrefab;
+    public MonsterData monsterData;
 
     public void Update() 
     {
-        if (Time.time - lastShotTime >= shotCooldown) 
+        if (enemiesInRange.Count > 0)
         {
-            // TODO: Our shot is off cooldown. If there is an enemy in range,
-            // shoot at the first available one.
-            if (enemiesInRange.Count > 0)
+            gameObject.transform.right = -(enemiesInRange[0].transform.position - gameObject.transform.position);
+
+            if (Time.time - lastShotTime >= shotCooldown)
             {
                 Shoot(enemiesInRange[0]);
                 lastShotTime = Time.time;
@@ -27,7 +28,7 @@ public class MonsterShoot : MonoBehaviour
     {
         // TODO: Instantiate a bullet, set its target to the enemy we want to shoot.
         // Make sure we update our lastShotTime to Time.time (see resource below).
-        GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject bulletObj = Instantiate(monsterData.CurrentLevel.bullet, transform.position, Quaternion.identity);
         Bullet newBullet = bulletObj.GetComponent<Bullet>();
         newBullet.target = target.transform;
 

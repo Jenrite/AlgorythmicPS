@@ -5,7 +5,16 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 100;
-    public float currentHealth = 100;
+    private float currentHealth = 100;
+    public float CurrentHealth { 
+        get { return currentHealth; } 
+        set {
+            currentHealth = value;
+            if (currentHealth <= 0) { 
+                DEATH(); 
+            }
+        } 
+    }
     private float originalXScale;
     public GameObject healthBar;
 
@@ -29,4 +38,11 @@ public class EnemyHealth : MonoBehaviour
 
         healthBar.transform.localScale = newScale;
     }
+
+    private void DEATH()
+    {
+        GameManager.Instance.Gold += 100;
+        Destroy(gameObject);
+    }
+
 }

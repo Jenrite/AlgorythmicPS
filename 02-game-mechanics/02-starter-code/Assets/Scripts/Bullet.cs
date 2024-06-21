@@ -12,6 +12,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null)
+        {
+            Destroy(gameObject);
+        }
+        else
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
@@ -20,7 +25,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth enemyHP = collision.gameObject.GetComponent<EnemyHealth>();
-            enemyHP.currentHealth -= damage;
+            enemyHP.CurrentHealth -= damage;
             Destroy(gameObject);
         }
     }
